@@ -1,5 +1,7 @@
 {
   "name": "tengasell-mobile",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
