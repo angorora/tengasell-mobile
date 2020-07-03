@@ -10,6 +10,8 @@ import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 import { environment } from 'src/environments/environment'
 import { HttpClientModule } from '@angular/common/http'
+import { AuthState } from './store/auth/auth-state'
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,8 +20,11 @@ import { HttpClientModule } from '@angular/common/http'
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    NgxsModule.forRoot([], {
+    NgxsModule.forRoot([AuthState], {
       developmentMode: !environment.production,
+    }),
+    NgxsStoragePluginModule.forRoot({
+      key: 'authState.token',
     }),
   ],
   providers: [
