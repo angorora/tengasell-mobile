@@ -3,9 +3,11 @@ import { AuthStateModel } from '../../models/user.model'
 import { AuthenticationService } from '../../shared/services/authentication.service'
 import { AuthActions, Login, Logout } from './auth.actions'
 import { tap } from 'rxjs/operators'
+import { Injectable } from '@angular/core'
 @State<AuthStateModel>({
   name: 'authState',
 })
+@Injectable()
 export class AuthState {
   @Selector()
   static token(state: AuthStateModel) {
@@ -29,9 +31,9 @@ export class AuthState {
         })
       )
   }
-  @Action(Logout)
-  logout(stateContext: StateContext<AuthStateModel>) {
-    const state = stateContext.getState()
-    stateContext.setState({})
-  }
+  // @Action(Logout)
+  // logout(stateContext: StateContext<AuthStateModel>) {
+  //   const state = stateContext.getState()
+  //   stateContext.setState({})
+  // }
 }
