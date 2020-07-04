@@ -9,9 +9,10 @@ import { NgxsModule } from '@ngxs/store'
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 import { environment } from 'src/environments/environment'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthState } from './store/auth/auth-state'
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin'
+import { HttpInterceptorService } from './shared/services/http-interceptor.service'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -30,6 +31,11 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin'
   providers: [
     StatusBar,
     SplashScreen,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],

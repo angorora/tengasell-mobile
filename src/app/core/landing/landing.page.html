@@ -2,19 +2,16 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" fill="outline">Login</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" fill="outline"
-          >Register As Seller</ion-button
+        <ion-button (click)="gotoLogin()" expand="block" fill="outline"
+          >Login</ion-button
         >
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" fill="outline">Register As Buyer</ion-button>
+        <ion-button (click)="register()" expand="block" fill="outline"
+          >Register</ion-button
+        >
       </ion-col>
     </ion-row>
   </ion-grid>

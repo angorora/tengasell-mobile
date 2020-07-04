@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://207.244.246.78:2223/',
+  baseURL: 'https://cors-anywhere.herokuapp.com/http://207.244.246.78:2223/',
 }
 
 /*
