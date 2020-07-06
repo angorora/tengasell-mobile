@@ -24,3 +24,32 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url(./assets/custom/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Montserrat Regular';
+    src: url(./assets/custom/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Source Sans Pro Regular';
+    src: url('./assets/custom/SourceSansPro-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('./assets/custom/SourceSansPro-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro Bold';
+    src: url('./assets/custom/SourceSansPro-Bold.ttf');
+}
+
+ion-card-title {
+    font-family: 'Montserrat Bold';
+}
