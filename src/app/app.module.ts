@@ -15,6 +15,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin'
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin'
 import { HttpInterceptorService } from './shared/services/http-interceptor.service'
 import { ErrorState } from './store/error/error.state'
+import { UserState } from './store/user/user.state'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,7 +24,7 @@ import { ErrorState } from './store/error/error.state'
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    NgxsModule.forRoot([AuthState, ErrorState], {
+    NgxsModule.forRoot([AuthState, ErrorState, UserState], {
       developmentMode: !environment.production,
     }),
     NgxsStoragePluginModule.forRoot({

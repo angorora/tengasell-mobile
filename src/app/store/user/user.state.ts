@@ -26,7 +26,7 @@ export class UserState {
   createUser(ctx: StateContext<User>, action: RegisterUser) {
     const state = ctx.getState()
     return this.authService
-      .register(action.payload)
+      .register({ ...state, ...action.payload })
       .pipe(tap((response) => ctx.setState({ ...state, ...response })))
   }
 }

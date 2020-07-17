@@ -57,3 +57,12 @@ ion-card-title {
 body {
     background-color: var(--ion-color-secondary);
 }
+
+.error {
+    color: tomato;
+    font-size: small;
+}
+
+ion-item {
+    color: var(--ion-color-secondary);
+}
