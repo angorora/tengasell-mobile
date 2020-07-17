@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Store, Actions, ofActionSuccessful } from '@ngxs/store'
-import { Subject, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 import { RegisterUser } from 'src/app/store/user/user.actions'
 
 @Component({
@@ -40,13 +40,9 @@ export class RegistrationOnePage implements OnInit {
       passwordRetype: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
-        // this.validatePasswordsquality,
       ]),
       pin: new FormControl('', [Validators.required]),
-      pinRetype: new FormControl('', [
-        Validators.required,
-        // this.validatePinsquality,
-      ]),
+      pinRetype: new FormControl('', [Validators.required]),
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [
@@ -59,7 +55,6 @@ export class RegistrationOnePage implements OnInit {
         Validators.maxLength(10),
       ]),
     }
-
     this.regForm = this.formBuilder.group(this.userFields)
   }
   ngOnInit() {
@@ -68,26 +63,6 @@ export class RegistrationOnePage implements OnInit {
       .subscribe(() => {
         this.router.navigateByUrl('/login')
       })
-  }
-
-  validatePinsquality(control: FormControl) {
-    let pinRetyped = control.value
-    let pin = this.regForm.controls.pin.value
-    if (pin !== pinRetyped) {
-      control.setErrors({ passwordMismatch: true })
-      return { pinError: 'The PINs are different' }
-    }
-    return null
-  }
-
-  validatePasswordsquality(control: FormControl) {
-    let passwordRetyped = control.value
-    let pin = this.regForm.controls.password.value
-    if (pin !== passwordRetyped) {
-      control.setErrors({ passwordMismatch: true })
-      return { pinError: 'The passwords are different' }
-    }
-    return null
   }
 
   register() {
