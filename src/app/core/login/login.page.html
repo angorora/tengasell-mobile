@@ -1,59 +1,60 @@
-<ion-header>
-  <ion-toolbar color="tertiary">
-    <ion-buttons slot="start">
-      <ion-button>
-        <ion-icon name="arrow-back-sharp"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header (navBack)="navigateBack()"></app-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col class="ion-align-items-center">
-        <div class="login-card">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title color="light" class="ion-text-center"
-                >Tengasell</ion-card-title
-              >
-            </ion-card-header>
-            <ion-card-content>
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <form [formGroup]="loginForm">
-                      <ion-item>
-                        <ion-label position="floating">Username*</ion-label>
-                        <ion-input formControlName="username"></ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label position="floating">Password*</ion-label>
-                        <ion-input
-                          type="password"
-                          formControlName="password"
-                        ></ion-input>
-                      </ion-item>
-                    </form>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-button
-                      type="submit"
-                      (click)="login()"
-                      expand="block"
-                      fill="outline"
-                      >Login</ion-button
-                    >
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="login-card">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="secondary" class="ion-text-center"
+          >Tengasell</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <form [formGroup]="loginForm">
+                <ion-item>
+                  <ion-label color="secondary" position="floating"
+                    >Username*</ion-label
+                  >
+                  <ion-input formControlName="username"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="secondary" position="floating"
+                    >Password*</ion-label
+                  >
+                  <ion-input
+                    type="password"
+                    formControlName="password"
+                  ></ion-input>
+                </ion-item>
+                <p class="ion-text-center error-message">
+                  {{(error$ | async)}}
+                </p>
+              </form>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div>
+                <ion-button
+                  color="secondary"
+                  type="submit"
+                  (click)="login()"
+                  expand="block"
+                  fill="outline"
+                  >Login</ion-button
+                >
+              </div>
+              <div>
+                <a [routerLink]="registration-two">
+                  Forgot Password?
+                </a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

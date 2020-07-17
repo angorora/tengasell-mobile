@@ -12,7 +12,9 @@ import { environment } from 'src/environments/environment'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthState } from './store/auth/auth-state'
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin'
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin'
 import { HttpInterceptorService } from './shared/services/http-interceptor.service'
+import { ErrorState } from './store/error/error.state'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -21,12 +23,13 @@ import { HttpInterceptorService } from './shared/services/http-interceptor.servi
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    NgxsModule.forRoot([AuthState], {
+    NgxsModule.forRoot([AuthState, ErrorState], {
       developmentMode: !environment.production,
     }),
     NgxsStoragePluginModule.forRoot({
       key: 'authState.token',
     }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [
     StatusBar,

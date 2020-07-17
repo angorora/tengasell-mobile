@@ -4,9 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import { IonicModule } from '@ionic/angular'
 
-import { LoginPageRoutingModule } from './login-routing.module'
+import { RegistrationOnePageRoutingModule } from './registration-one-routing.module'
 
-import { LoginPage } from './login.page'
+import { RegistrationOnePage } from './registration-one.page'
 import { SharedModule } from 'src/app/shared/shared.module'
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module'
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
-    LoginPageRoutingModule,
     SharedModule,
+    RegistrationOnePageRoutingModule,
   ],
-  declarations: [LoginPage],
+  declarations: [RegistrationOnePage],
 })
-export class LoginPageModule {}
+export class RegistrationOnePageModule {}

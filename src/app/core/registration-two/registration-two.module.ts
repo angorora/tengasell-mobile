@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms'
 
 import { IonicModule } from '@ionic/angular'
 
-import { LandingPageRoutingModule } from './landing-routing.module'
+import { RegistrationTwoPageRoutingModule } from './registration-two-routing.module'
 
-import { LandingPage } from './landing.page'
+import { RegistrationTwoPage } from './registration-two.page'
 import { SharedModule } from 'src/app/shared/shared.module'
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module'
     CommonModule,
     FormsModule,
     IonicModule,
-    LandingPageRoutingModule,
     SharedModule,
+    RegistrationTwoPageRoutingModule,
   ],
-  declarations: [LandingPage],
+  declarations: [RegistrationTwoPage],
 })
-export class LandingPageModule {}
+export class RegistrationTwoPageModule {}

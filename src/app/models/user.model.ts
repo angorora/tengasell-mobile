@@ -1,16 +1,18 @@
 import { NumberFormatStyle } from '@angular/common'
 
 export interface User {
-  id: number
-  status: boolean
-  created_date: Date
-  modified_date?: Date
-  user_name_pin?: string
-  user_name: string
-  first_name: string
-  last_name: string
-  password_status?: boolean
-  account_status?: boolean
+  id?: number
+  applicationUID: string
+  status?: boolean
+  createdDate?: Date
+  modifiedDate?: Date
+  pin?: string
+  username: string
+  password?: string
+  firstname: string
+  lastname: string
+  passwordStatus?: boolean
+  accountStatus?: boolean
   email?: string
   phone?: string
   company: Company
@@ -21,14 +23,14 @@ export interface AuthStateModel {
   token?: string
 }
 export interface Company {
-  companyType?: string
+  companyType: string
   contactEmail?: string
   contactNumber?: string
   createdDate?: Date
   description?: string
   id: number
   modifiedDate?: Date
-  name?: string
+  name: string
   physicalAddress?: string
   status?: string
   version?: NumberFormatStyle

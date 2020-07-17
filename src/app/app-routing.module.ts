@@ -30,9 +30,12 @@ const routes: Routes = [
       import('./core/landing/landing.module').then((m) => m.LandingPageModule),
   },
   {
-    path: 'landing',
-    loadChildren: () =>
-      import('./core/landing/landing.module').then((m) => m.LandingPageModule),
+    path: 'registration-one',
+    loadChildren: () => import('./core/registration-one/registration-one.module').then( m => m.RegistrationOnePageModule)
+  },
+  {
+    path: 'registration-two',
+    loadChildren: () => import('./core/registration-two/registration-two.module').then( m => m.RegistrationTwoPageModule)
   },
 ]
 

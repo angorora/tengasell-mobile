@@ -12,6 +12,7 @@ import { AuthState } from 'src/app/store/auth/auth-state'
 import { jwt_decode } from 'jwt-decode'
 import { catchError } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { HTTPError } from 'src/app/store/error/error.actions'
 @Injectable({
   providedIn: 'root',
 })
@@ -37,6 +38,7 @@ export class HttpInterceptorService implements HttpInterceptor {
         } else {
           return throwError(error)
         }
+        return this.store.dispatch(new HTTPError(error))
       })
     )
   }
@@ -50,17 +52,14 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     return (req = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.store.selectSnapshot(AuthState.token)}`,
+        Authorization: `Bearer ${token}`,
       },
     }))
   }
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token)
-
     if (decoded.exp === undefined) return null
-
     const date = new Date(decoded.exp)
-    //date.setUTCSeconds(decoded.exp);
     return date
   }
 

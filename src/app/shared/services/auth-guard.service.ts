@@ -13,7 +13,7 @@ export class AuthGuardService {
     if (!!this.store.selectSnapshot(AuthState.token)) {
       return true
     } else {
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/landing')
       return false
     }
   }

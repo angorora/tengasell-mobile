@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--ion-color-secondary);
+
+    .waves-container {
+
+        margin-bottom: 0;
+
+        .waves {
+
+            display: block;
+        }
+    }
+}
