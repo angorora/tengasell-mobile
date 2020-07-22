@@ -12,7 +12,7 @@ import { AuthState } from 'src/app/store/auth/auth-state'
 import { jwt_decode } from 'jwt-decode'
 import { catchError } from 'rxjs/operators'
 import { Router } from '@angular/router'
-import { HTTPError, ApiError } from 'src/app/store/error/error.actions'
+import { HTTPError } from 'src/app/store/error/error.actions'
 @Injectable({
   providedIn: 'root',
 })
@@ -38,13 +38,8 @@ export class HttpInterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error && error.status === 401) {
           this.router.navigateByUrl('/login')
-          return this.store.dispatch(new HTTPError(error))
         }
-        if (error && error.status === 200) {
-          return this.store.dispatch(
-            new ApiError({ status: error.status, message: error.message })
-          )
-        }
+        return this.store.dispatch(new HTTPError(error))
         throwError(error)
       })
     )

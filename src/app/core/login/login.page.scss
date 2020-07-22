@@ -1,9 +1,13 @@
-.login-card {
-  background-color: var(--ion-color-secondary);
+.login-wrapper {
+  background-color: var(--ion-color-primary);
   display: flex;
   justify-content: center;
   flex-direction: column;
   height: 100%;
+
+  .login-card {
+    background-color: var(--ion-color-light);
+  }
 
   .error-message {
     color: var(--ion-color-danger);

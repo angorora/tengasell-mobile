@@ -6,6 +6,7 @@ import { Router } from '@angular/router'
 import { ErrorState } from 'src/app/store/error/error.state'
 import { HttpErrorModel } from 'src/app/models/http-error.model'
 import { Observable, Subscription } from 'rxjs'
+import { ResetError } from 'src/app/store/error/error.actions'
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,7 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup
   @Select(ErrorState.errorMessage)
   serverError$: Observable<string>
-  @Select(ErrorState.apiErrorMessage)
-  apirError$: Observable<string>
+
   actionsUnsubscribe$: Subscription
   constructor(
     private formBuilder: FormBuilder,

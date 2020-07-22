@@ -55,12 +55,21 @@ ion-card-title {
 }
 
 body {
-    background-color: var(--ion-color-secondary);
+    background-color: var(--ion-color-primary);
 }
 
 .error {
     color: tomato;
     font-size: small;
+}
+
+section {
+    padding: 10px;
+
+    header {
+        font-weight: bold;
+        color: var(--ion-color-primary)
+    }
 }
 
 ion-item {

@@ -1,10 +1,10 @@
 <app-header [title]="'Login'" (navBack)="navigateBack()">Login</app-header>
 
 <ion-content>
-  <div class="login-card">
-    <ion-card>
+  <div class="login-wrapper">
+    <ion-card class="login-card">
       <ion-card-header>
-        <ion-card-title color="secondary" class="ion-text-center"
+        <ion-card-title color="tertiary" class="ion-text-center"
           >Tengasell</ion-card-title
         >
       </ion-card-header>
@@ -14,25 +14,26 @@
             <ion-col>
               <form [formGroup]="loginForm">
                 <ion-item>
-                  <ion-label color="secondary" position="floating"
+                  <ion-label color="primary" position="floating"
                     >Username*</ion-label
                   >
-                  <ion-input formControlName="username"></ion-input>
+                  <ion-input
+                    class="input"
+                    formControlName="username"
+                  ></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-label color="secondary" position="floating"
+                  <ion-label color="primary" position="floating"
                     >Password*</ion-label
                   >
                   <ion-input
                     type="password"
+                    class="input"
                     formControlName="password"
                   ></ion-input>
                 </ion-item>
                 <p class="ion-text-center error-message">
                   {{(serverError$ | async)}}
-                </p>
-                <p class="ion-text-center error-message">
-                  {{(apiError$ | async)}}
                 </p>
               </form>
             </ion-col>
@@ -41,7 +42,7 @@
             <ion-col>
               <div>
                 <ion-button
-                  color="secondary"
+                  color="primary"
                   type="submit"
                   (click)="login()"
                   expand="block"
