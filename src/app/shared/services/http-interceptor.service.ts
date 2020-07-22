@@ -12,7 +12,7 @@ import { AuthState } from 'src/app/store/auth/auth-state'
 import { jwt_decode } from 'jwt-decode'
 import { catchError } from 'rxjs/operators'
 import { Router } from '@angular/router'
-import { HTTPError } from 'src/app/store/error/error.actions'
+import { HTTPError, ApiError } from 'src/app/store/error/error.actions'
 @Injectable({
   providedIn: 'root',
 })
@@ -29,19 +29,23 @@ export class HttpInterceptorService implements HttpInterceptor {
     }
 
     if (!req.url.includes('login') && !req.url.includes('users')) {
-      this.addAuthTokenToHeaders(req)
+      req = this.addAuthTokenToHeaders(req)
     } else {
-      this.addBasicAuthHeaders(req)
+      req = this.addBasicAuthHeaders(req)
     }
 
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error && error.status === 401) {
           this.router.navigateByUrl('/login')
+          return this.store.dispatch(new HTTPError(error))
+        }
+        if (error && error.status === 200) {
+          return this.store.dispatch(
+            new ApiError({ status: error.status, message: error.message })
+          )
         }
         throwError(error)
-
-        return this.store.dispatch(new HTTPError(error))
       })
     )
   }
@@ -54,16 +58,15 @@ export class HttpInterceptorService implements HttpInterceptor {
     //TODO If you are calling an outside domain then do not add the token.
 
     return (req = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: req.headers.set('Authorization', `Bearer ${token}`),
     }))
   }
   private addBasicAuthHeaders(req: HttpRequest<any>): HttpRequest<any> {
     return req.clone({
-      setHeaders: {
-        Authorization: `Basic pinda:Password@2019`,
-      },
+      headers: req.headers.set(
+        'Authorization',
+        `Basic ${btoa('pinda:Password@2019')}`
+      ),
     })
   }
   getTokenExpirationDate(token: string): Date {

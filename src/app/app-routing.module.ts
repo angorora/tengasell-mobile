@@ -5,14 +5,8 @@ import { AuthGuardService } from './shared/services/auth-guard.service'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
-
+    redirectTo: 'home',
     pathMatch: 'full',
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () =>
-      import('./folder/folder.module').then((m) => m.FolderPageModule),
   },
   {
     path: 'login',
@@ -21,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./core/home/home.module').then((m) => m.HomePageModule),
   },
@@ -38,7 +33,10 @@ const routes: Routes = [
   },
   {
     path: 'password-reset',
-    loadChildren: () => import('./core/password-reset/password-reset.module').then( m => m.PasswordResetPageModule)
+    loadChildren: () =>
+      import('./core/password-reset/password-reset.module').then(
+        (m) => m.PasswordResetPageModule
+      ),
   },
 ]
 

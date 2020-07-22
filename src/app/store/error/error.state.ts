@@ -10,13 +10,17 @@ import { HttpErrorModel } from 'src/app/models/http-error.model'
 export class ErrorState {
   @Selector()
   static errorMessage(state: HttpErrorModel) {
+    let message
+
     switch (state.error.status) {
       case 401:
-        return 'Either username or password is incorrect'
+        message = 'Either username or password is incorrect'
+      case 200:
+        message = state.error.message
       default:
-        return 'An Error Occured on the server'
+        message = 'Action failed please try again'
     }
-    return state.error.name
+    return message
   }
   @Selector()
   static apiErrorMessage(state: HttpErrorModel) {

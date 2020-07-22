@@ -13,7 +13,7 @@ import { switchMap, tap } from 'rxjs/operators'
     lastname: '',
     applicationUID: '{4aecdd14-8a3f-4aa8-8adc-7b0b06355aaa}',
     company: {
-      id: 159236191188139144,
+      id: 0,
       name: 'Tengasell',
       companyType: 'CUSTOMER',
     },

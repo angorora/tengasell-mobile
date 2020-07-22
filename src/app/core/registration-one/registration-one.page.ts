@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { Store, Actions, ofActionSuccessful } from '@ngxs/store'
 import { Subscription } from 'rxjs'
 import { RegisterUser } from 'src/app/store/user/user.actions'
+import { ToastService } from 'src/app/shared/services/toast.service'
 
 @Component({
   selector: 'app-registration-one',
@@ -29,12 +30,14 @@ export class RegistrationOnePage implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private store: Store,
-    private actions$: Actions
+    private actions$: Actions,
+    private toast: ToastService
   ) {
     this.userFields = {
       username: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^[a-z0-9_-]{3,16}$/g),
+        Validators.pattern(/^[a-z0-9]*$/i),
+        Validators.minLength(5),
       ]),
       password: new FormControl('', [
         Validators.required,
@@ -65,7 +68,7 @@ export class RegistrationOnePage implements OnInit {
     this.actionsUnsubscribe$ = this.actions$
       .pipe(ofActionSuccessful(RegisterUser))
       .subscribe((action) => {
-        console.dir(action)
+        this.toast.presentToast('User saved successfully')
         this.router.navigateByUrl('/login')
       })
   }

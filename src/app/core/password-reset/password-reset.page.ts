@@ -4,6 +4,7 @@ import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Store, Actions, ofActionSuccessful } from '@ngxs/store'
 import { ResetPassword } from 'src/app/store/auth/auth.actions'
+import { ToastService } from 'src/app/shared/services/toast.service'
 
 @Component({
   selector: 'app-password-reset',
@@ -21,7 +22,8 @@ export class PasswordResetPage implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private store: Store,
-    private actions$: Actions
+    private actions$: Actions,
+    private toast: ToastService
   ) {
     this.userFields = {
       username: new FormControl('', [
@@ -44,6 +46,7 @@ export class PasswordResetPage implements OnInit {
     this.actionsUnsubscribe$ = this.actions$
       .pipe(ofActionSuccessful(ResetPassword))
       .subscribe(() => {
+        this.toast.presentToast('Password reset successfully')
         this.router.navigateByUrl('/login')
       })
   }
@@ -58,5 +61,8 @@ export class PasswordResetPage implements OnInit {
   }
   navigateBack() {
     this.router.navigateByUrl('/login')
+  }
+  ngOnDestroy() {
+    this.actionsUnsubscribe$.unsubscribe()
   }
 }

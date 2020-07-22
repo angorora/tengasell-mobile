@@ -48,7 +48,9 @@ export class AuthState {
               token: response.responseBody,
             })
           } else {
-            stateContext.dispatch(new ApiError({ message: response.message }))
+            stateContext.dispatch(
+              new ApiError({ status: 200, message: response.message })
+            )
           }
         })
       )
@@ -75,9 +77,9 @@ export class AuthState {
         })
       )
   }
-  // @Action(Logout)
-  // logout(stateContext: StateContext<AuthStateModel>) {
-  //   const state = stateContext.getState()
-  //   stateContext.setState({})
-  // }
+  @Action(Logout)
+  logout(stateContext: StateContext<AuthStateModel>) {
+    const state = stateContext.getState()
+    stateContext.setState({ ...state, token: '' })
+  }
 }

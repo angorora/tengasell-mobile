@@ -1,11 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
-import { Store, Select } from '@ngxs/store'
+import { Store, Select, ofActionSuccessful, Actions } from '@ngxs/store'
 import { Login } from 'src/app/store/auth/auth.actions'
 import { Router } from '@angular/router'
 import { ErrorState } from 'src/app/store/error/error.state'
 import { HttpErrorModel } from 'src/app/models/http-error.model'
-import { Observable } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-login',
@@ -19,10 +19,12 @@ export class LoginPage implements OnInit {
   serverError$: Observable<string>
   @Select(ErrorState.apiErrorMessage)
   apirError$: Observable<string>
+  actionsUnsubscribe$: Subscription
   constructor(
     private formBuilder: FormBuilder,
     private store: Store,
-    private router: Router
+    private router: Router,
+    private actions$: Actions
   ) {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', { validators: [Validators.required] }),
@@ -43,5 +45,15 @@ export class LoginPage implements OnInit {
     this.router.navigateByUrl('/landing')
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.actionsUnsubscribe$ = this.actions$
+      .pipe(ofActionSuccessful(Login))
+      .subscribe((action) => {
+        console.dir(action)
+        this.router.navigateByUrl('/home')
+      })
+  }
+  ngOnDestroy() {
+    this.actionsUnsubscribe$.unsubscribe()
+  }
 }

@@ -111,6 +111,12 @@
         Please enter username
       </div>
       <div
+        *ngIf="(regForm.controls.username.touched|| submitted) && regForm.controls.username.errors?.minlength"
+        class="error"
+      >
+        Should be at least 5 characters long
+      </div>
+      <div
         *ngIf="(regForm.controls.username.touched|| submitted) && regForm.controls.username.errors?.pattern"
         class="error"
       >

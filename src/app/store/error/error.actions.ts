@@ -8,5 +8,5 @@ export class HTTPError {
 }
 export class ApiError {
   static readonly type = SERVER_ERROR
-  constructor(public error: { message: string }) {}
+  constructor(public error: { status: number; message: string }) {}
 }
