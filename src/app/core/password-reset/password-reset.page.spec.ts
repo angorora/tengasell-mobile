@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { RegistrationTwoPage } from './registration-two.page';
+import { PasswordResetPage } from './password-reset.page';
 
-describe('RegistrationTwoPage', () => {
-  let component: RegistrationTwoPage;
-  let fixture: ComponentFixture<RegistrationTwoPage>;
+describe('PasswordResetPage', () => {
+  let component: PasswordResetPage;
+  let fixture: ComponentFixture<PasswordResetPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistrationTwoPage ],
+      declarations: [ PasswordResetPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RegistrationTwoPage);
+    fixture = TestBed.createComponent(PasswordResetPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -16,7 +16,9 @@ import { Observable } from 'rxjs'
 export class LoginPage implements OnInit {
   loginForm: FormGroup
   @Select(ErrorState.errorMessage)
-  error$: Observable<string>
+  serverError$: Observable<string>
+  @Select(ErrorState.apiErrorMessage)
+  apirError$: Observable<string>
   constructor(
     private formBuilder: FormBuilder,
     private store: Store,

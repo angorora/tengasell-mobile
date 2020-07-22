@@ -20,6 +20,7 @@ export interface User {
 export interface AuthStateModel {
   username?: string
   password?: string
+  applicationUID: string
   token?: string
 }
 export interface Company {

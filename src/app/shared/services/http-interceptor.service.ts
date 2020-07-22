@@ -27,17 +27,20 @@ export class HttpInterceptorService implements HttpInterceptor {
         headers: req.headers.set('Content-Type', 'application/json'),
       })
     }
-    if (!req.url.includes('login')) {
+
+    if (!req.url.includes('login') && !req.url.includes('users')) {
       this.addAuthTokenToHeaders(req)
+    } else {
+      this.addBasicAuthHeaders(req)
     }
 
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error && error.status === 401) {
           this.router.navigateByUrl('/login')
-        } else {
-          return throwError(error)
         }
+        throwError(error)
+
         return this.store.dispatch(new HTTPError(error))
       })
     )
@@ -55,6 +58,13 @@ export class HttpInterceptorService implements HttpInterceptor {
         Authorization: `Bearer ${token}`,
       },
     }))
+  }
+  private addBasicAuthHeaders(req: HttpRequest<any>): HttpRequest<any> {
+    return req.clone({
+      setHeaders: {
+        Authorization: `Basic pinda:Password@2019`,
+      },
+    })
   }
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token)

@@ -31,11 +31,14 @@ const routes: Routes = [
   },
   {
     path: 'registration-one',
-    loadChildren: () => import('./core/registration-one/registration-one.module').then( m => m.RegistrationOnePageModule)
+    loadChildren: () =>
+      import('./core/registration-one/registration-one.module').then(
+        (m) => m.RegistrationOnePageModule
+      ),
   },
   {
-    path: 'registration-two',
-    loadChildren: () => import('./core/registration-two/registration-two.module').then( m => m.RegistrationTwoPageModule)
+    path: 'password-reset',
+    loadChildren: () => import('./core/password-reset/password-reset.module').then( m => m.PasswordResetPageModule)
   },
 ]
 

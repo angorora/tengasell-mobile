@@ -32,7 +32,10 @@ export class RegistrationOnePage implements OnInit {
     private actions$: Actions
   ) {
     this.userFields = {
-      username: new FormControl('', [Validators.required]),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[a-z0-9_-]{3,16}$/g),
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
@@ -51,6 +54,7 @@ export class RegistrationOnePage implements OnInit {
       ]),
       phone: new FormControl('', [
         Validators.required,
+        Validators.pattern(/\d/g),
         Validators.minLength(10),
         Validators.maxLength(10),
       ]),
@@ -60,7 +64,8 @@ export class RegistrationOnePage implements OnInit {
   ngOnInit() {
     this.actionsUnsubscribe$ = this.actions$
       .pipe(ofActionSuccessful(RegisterUser))
-      .subscribe(() => {
+      .subscribe((action) => {
+        console.dir(action)
         this.router.navigateByUrl('/login')
       })
   }

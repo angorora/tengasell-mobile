@@ -1,4 +1,6 @@
-<app-header (navBack)="navigateBack()"> </app-header>
+<app-header [title]="'Register'" (navBack)="navigateBack()"
+  >Register</app-header
+>
 <ion-content>
   <form [formGroup]="regForm" (ngSubmit)="register()">
     <section *ngIf="false" class="company-type">
@@ -48,7 +50,11 @@
       <header class="ion-text-left section-header">Personal Details</header>
       <ion-item>
         <ion-label position="floating">First Name*</ion-label>
-        <ion-input formControlName="firstname" [value]="firstName"></ion-input>
+        <ion-input
+          style="text-transform: capitalize;"
+          formControlName="firstname"
+          [value]="firstName"
+        ></ion-input>
       </ion-item>
       <div
         *ngIf="(regForm.controls.firstname.touched || submitted) && regForm.controls.firstname.errors?.required"
@@ -58,7 +64,11 @@
       </div>
       <ion-item>
         <ion-label position="floating">Last Name*</ion-label>
-        <ion-input formControlName="lastname" [value]="lastName"></ion-input>
+        <ion-input
+          style="text-transform: capitalize;"
+          formControlName="lastname"
+          [value]="lastName"
+        ></ion-input>
       </ion-item>
       <div
         *ngIf="(regForm.controls.lastname.touched || submitted) && regForm.controls.lastname.errors?.required"
@@ -68,13 +78,24 @@
       </div>
       <ion-item>
         <ion-label position="floating">Cellphone Number*</ion-label>
-        <ion-input formControlName="phone" [value]="cellphone"></ion-input>
+        <ion-input
+          type="tel"
+          formControlName="phone"
+          maxlength="10"
+          [value]="cellphone"
+        ></ion-input>
       </ion-item>
       <div
         *ngIf="(regForm.controls.phone.touched || submitted) && regForm.controls.phone.errors?.required"
         class="error"
       >
         Please enter phone number
+      </div>
+      <div
+        *ngIf="(regForm.controls.phone.touched || submitted) && regForm.controls.phone.errors?.pattern"
+        class="error"
+      >
+        Phone number not valid
       </div>
     </section>
     <section class="security-details">
@@ -88,6 +109,12 @@
         class="error"
       >
         Please enter username
+      </div>
+      <div
+        *ngIf="(regForm.controls.username.touched|| submitted) && regForm.controls.username.errors?.pattern"
+        class="error"
+      >
+        Username should be alphanumeric and may include _ and -
       </div>
       <ion-item>
         <ion-label position="floating">Email*</ion-label>
@@ -103,6 +130,7 @@
       >
         Please enter email
       </div>
+
       <div
         *ngIf="(regForm.controls.email.touched|| submitted) && regForm.controls.email.errors?.pattern"
         class="error"
@@ -163,7 +191,7 @@
       </ion-item>
 
       <div
-        *ngIf="(regForm.controls.pinRetype.touched|| submitted) && regForm.controls.pinRetype.value !== regForm.controls.pinRetype.value"
+        *ngIf="(regForm.controls.pinRetype.touched|| submitted) && regForm.controls.pinRetype.value !== regForm.controls.pin.value"
         class="error"
       >
         PINs do not match

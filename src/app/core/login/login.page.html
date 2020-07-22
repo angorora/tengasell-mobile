@@ -1,4 +1,4 @@
-<app-header (navBack)="navigateBack()"></app-header>
+<app-header [title]="'Login'" (navBack)="navigateBack()">Login</app-header>
 
 <ion-content>
   <div class="login-card">
@@ -29,7 +29,10 @@
                   ></ion-input>
                 </ion-item>
                 <p class="ion-text-center error-message">
-                  {{(error$ | async)}}
+                  {{(serverError$ | async)}}
+                </p>
+                <p class="ion-text-center error-message">
+                  {{(apiError$ | async)}}
                 </p>
               </form>
             </ion-col>
@@ -47,7 +50,7 @@
                 >
               </div>
               <div>
-                <a [routerLink]="registration-two">
+                <a routerLink="/password-reset">
                   Forgot Password?
                 </a>
               </div>
