@@ -1,0 +1,63 @@
+<app-header [title]="'Login'" (navBack)="navigateBack()">Login</app-header>
+
+<ion-content>
+  <div class="login-card">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="secondary" class="ion-text-center"
+          >Tengasell</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <form [formGroup]="loginForm">
+                <ion-item>
+                  <ion-label color="secondary" position="floating"
+                    >Username*</ion-label
+                  >
+                  <ion-input formControlName="username"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="secondary" position="floating"
+                    >Password*</ion-label
+                  >
+                  <ion-input
+                    type="password"
+                    formControlName="password"
+                  ></ion-input>
+                </ion-item>
+                <p class="ion-text-center error-message">
+                  {{(serverError$ | async)}}
+                </p>
+                <p class="ion-text-center error-message">
+                  {{(apiError$ | async)}}
+                </p>
+              </form>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div>
+                <ion-button
+                  color="secondary"
+                  type="submit"
+                  (click)="login()"
+                  expand="block"
+                  fill="outline"
+                  >Login</ion-button
+                >
+              </div>
+              <div>
+                <a routerLink="/password-reset">
+                  Forgot Password?
+                </a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

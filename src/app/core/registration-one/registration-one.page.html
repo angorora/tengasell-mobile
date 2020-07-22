@@ -1,0 +1,206 @@
+<app-header [title]="'Register'" (navBack)="navigateBack()"
+  >Register</app-header
+>
+<ion-content>
+  <form [formGroup]="regForm" (ngSubmit)="register()">
+    <section *ngIf="false" class="company-type">
+      <header class="ion-text-left section-header">Please select</header>
+      <ion-segment
+        (ionChange)="handleUserType($event)"
+        name="userType"
+        color="danger"
+        [value]="userType"
+      >
+        <ion-segment-button value="customer" layout="icon-end">
+          <ion-icon name="heart"></ion-icon>
+          <ion-label>Customer</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="agent" layout="icon-end">
+          <ion-icon name="pin"></ion-icon>
+          <ion-label>Agent</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="supplier" layout="icon-end">
+          <ion-icon name="pin"></ion-icon>
+          <ion-label>Supplier</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </section>
+    <section *ngIf="false" class="company-details">
+      <header class="ion-text-left section-header">Company Details</header>
+      <ion-item>
+        <ion-label position="floating">Company Name*</ion-label>
+        <ion-input name="companyName" [value]="companyName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea
+          name="companyDescription"
+          [value]="companyDescription"
+        ></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Physical Address</ion-label>
+        <ion-textarea
+          name="companyAddress"
+          [value]="companyAddress"
+        ></ion-textarea>
+      </ion-item>
+    </section>
+    <section class="personal-details">
+      <header class="ion-text-left section-header">Personal Details</header>
+      <ion-item>
+        <ion-label position="floating">First Name*</ion-label>
+        <ion-input
+          style="text-transform: capitalize;"
+          formControlName="firstname"
+          [value]="firstName"
+        ></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.firstname.touched || submitted) && regForm.controls.firstname.errors?.required"
+        class="error"
+      >
+        Please enter first name
+      </div>
+      <ion-item>
+        <ion-label position="floating">Last Name*</ion-label>
+        <ion-input
+          style="text-transform: capitalize;"
+          formControlName="lastname"
+          [value]="lastName"
+        ></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.lastname.touched || submitted) && regForm.controls.lastname.errors?.required"
+        class="error"
+      >
+        Please enter last name
+      </div>
+      <ion-item>
+        <ion-label position="floating">Cellphone Number*</ion-label>
+        <ion-input
+          type="tel"
+          formControlName="phone"
+          maxlength="10"
+          [value]="cellphone"
+        ></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.phone.touched || submitted) && regForm.controls.phone.errors?.required"
+        class="error"
+      >
+        Please enter phone number
+      </div>
+      <div
+        *ngIf="(regForm.controls.phone.touched || submitted) && regForm.controls.phone.errors?.pattern"
+        class="error"
+      >
+        Phone number not valid
+      </div>
+    </section>
+    <section class="security-details">
+      <header class="ion-text-left section-header">Security Details</header>
+      <ion-item>
+        <ion-label position="floating">Username*</ion-label>
+        <ion-input formControlName="username" [value]="username"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.username.touched|| submitted) && regForm.controls.username.errors?.required"
+        class="error"
+      >
+        Please enter username
+      </div>
+      <div
+        *ngIf="(regForm.controls.username.touched|| submitted) && regForm.controls.username.errors?.pattern"
+        class="error"
+      >
+        Username should be alphanumeric and may include _ and -
+      </div>
+      <ion-item>
+        <ion-label position="floating">Email*</ion-label>
+        <ion-input
+          formControlName="email"
+          type="email"
+          [value]="email"
+        ></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.email.touched || submitted) && regForm.controls.email.errors?.required"
+        class="error"
+      >
+        Please enter email
+      </div>
+
+      <div
+        *ngIf="(regForm.controls.email.touched|| submitted) && regForm.controls.email.errors?.pattern"
+        class="error"
+      >
+        Please check email format
+      </div>
+      <ion-item>
+        <ion-label position="floating">Password*</ion-label>
+        <ion-input
+          type="password"
+          formControlName="password"
+          [value]="password"
+        ></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.password.touched || submitted)&& regForm.controls.password.errors?.required"
+        class="error"
+      >
+        Please enter password
+      </div>
+      <ion-item>
+        <ion-label position="floating">Retype Password*</ion-label>
+        <ion-input
+          type="password"
+          formControlName="passwordRetype"
+          [value]="passwordRetype"
+        ></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.passwordRetype.touched || submitted) && regForm.controls.passwordRetype.value !== regForm.controls.password.value"
+        class="error"
+      >
+        Passwords do not match
+      </div>
+      <ion-item>
+        <ion-label position="floating">PIN*</ion-label>
+        <ion-input
+          type="password"
+          formControlName="pin"
+          maxlength="4"
+          [value]="pin"
+        ></ion-input>
+      </ion-item>
+      <div
+        *ngIf="(regForm.controls.pin.touched || submitted) && regForm.controls.pin.errors?.required"
+        class="error"
+      >
+        Please enter PIN
+      </div>
+      <ion-item>
+        <ion-label position="floating">Re-enter PIN*</ion-label>
+        <ion-input
+          type="password"
+          formControlName="pinRetype"
+          maxlength="4"
+          [value]="pinRetype"
+        ></ion-input>
+      </ion-item>
+
+      <div
+        *ngIf="(regForm.controls.pinRetype.touched|| submitted) && regForm.controls.pinRetype.value !== regForm.controls.pin.value"
+        class="error"
+      >
+        PINs do not match
+      </div>
+    </section>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="register()" expand="full" fill="outline"
+    >Register <ion-icon slot="end" name="chevron-forward-outline"></ion-icon
+  ></ion-button>
+</ion-footer>

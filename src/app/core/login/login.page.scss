@@ -1,0 +1,11 @@
+.login-card {
+  background-color: var(--ion-color-secondary);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+  .error-message {
+    color: var(--ion-color-danger);
+  }
+}
