@@ -5,9 +5,9 @@ export function mapUserFromServer(response): User {
     username: response.username,
     firstname: response.first_name,
     lastname: response.last_name,
-    applicationUID: response.application_uid,
+    userType: response.user_type,
     company: {
-      id: 159236191188139144,
+      id: '159236191188139144',
       name: 'Tengasell',
       companyType: 'CUSTOMER',
     },
@@ -15,7 +15,6 @@ export function mapUserFromServer(response): User {
 }
 export function mapUserToServer(user: User) {
   return {
-    application_uid: user.applicationUID,
     belong_to: user.company.id,
     email: user.email,
     first_name: user.firstname,
@@ -24,7 +23,7 @@ export function mapUserToServer(user: User) {
     pin: user.pin,
     phone: user.phone,
     user_name_pin: user.pin,
-    user_type: user.company.companyType,
+    user_type: user.userType,
     username: user.username,
   }
 }

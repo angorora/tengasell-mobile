@@ -5,6 +5,10 @@ import { HttpErrorModel } from 'src/app/models/http-error.model'
 
 @State<HttpErrorModel>({
   name: 'errors',
+  defaults: {
+    message: '',
+    status: 0,
+  },
 })
 @Injectable()
 export class ErrorState {
@@ -47,6 +51,15 @@ export class ErrorState {
       ...state,
       message: action.error.message,
       status: action.error.status,
+    })
+  }
+  @Action(ResetError)
+  resetError(stateContext: StateContext<HttpErrorModel>, action: ResetError) {
+    const state = stateContext.getState()
+    stateContext.setState({
+      ...state,
+      message: '',
+      status: 0,
     })
   }
 }

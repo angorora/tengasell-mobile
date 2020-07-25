@@ -5,14 +5,15 @@ import {
   HttpHandler,
   HttpEvent,
   HttpErrorResponse,
+  HttpResponse,
 } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs'
 import { Store } from '@ngxs/store'
 import { AuthState } from 'src/app/store/auth/auth-state'
 import { jwt_decode } from 'jwt-decode'
-import { catchError } from 'rxjs/operators'
+import { catchError, tap } from 'rxjs/operators'
 import { Router } from '@angular/router'
-import { HTTPError } from 'src/app/store/error/error.actions'
+import { HTTPError, ApiError } from 'src/app/store/error/error.actions'
 @Injectable({
   providedIn: 'root',
 })
@@ -35,6 +36,14 @@ export class HttpInterceptorService implements HttpInterceptor {
     }
 
     return next.handle(req).pipe(
+      tap((response: HttpEvent<any>) => {
+        if (response instanceof HttpResponse && response.status === 200) {
+          if (!response.body.success)
+            this.store.dispatch(
+              new ApiError({ status: 200, message: response.body.message })
+            )
+        }
+      }),
       catchError((error: HttpErrorResponse) => {
         if (error && error.status === 401) {
           this.router.navigateByUrl('/login')

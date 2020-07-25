@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model'
 import { RegisterUser } from './user.actions'
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
 import { switchMap, tap } from 'rxjs/operators'
+import { ResetError } from '../error/error.actions'
 
 @State<User>({
   name: 'user',
@@ -11,11 +12,11 @@ import { switchMap, tap } from 'rxjs/operators'
     username: '',
     firstname: '',
     lastname: '',
-    applicationUID: '{4aecdd14-8a3f-4aa8-8adc-7b0b06355aaa}',
+    userType: 'USER',
     company: {
-      id: 0,
+      id: '159550767689447256',
       name: 'Tengasell',
-      companyType: 'CUSTOMER',
+      companyType: 'SELF',
     },
   },
 })
@@ -25,6 +26,7 @@ export class UserState {
   @Action(RegisterUser)
   createUser(ctx: StateContext<User>, action: RegisterUser) {
     const state = ctx.getState()
+    ctx.dispatch(new ResetError())
     return this.authService
       .register({ ...state, ...action.payload })
       .pipe(tap((response) => ctx.setState({ ...state, ...response })))

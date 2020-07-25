@@ -1,6 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
-import { Store, Select, ofActionSuccessful, Actions } from '@ngxs/store'
+import {
+  Store,
+  Select,
+  ofActionSuccessful,
+  Actions,
+  ofActionDispatched,
+} from '@ngxs/store'
 import { Login } from 'src/app/store/auth/auth.actions'
 import { Router } from '@angular/router'
 import { ErrorState } from 'src/app/store/error/error.state'
@@ -20,6 +26,7 @@ export class LoginPage implements OnInit {
   serverError$: Observable<string>
 
   actionsUnsubscribe$: Subscription
+  actionsLoginUnsubscribe$: Subscription
   constructor(
     private formBuilder: FormBuilder,
     private store: Store,
@@ -52,8 +59,14 @@ export class LoginPage implements OnInit {
         console.dir(action)
         this.router.navigateByUrl('/home')
       })
+    this.actionsLoginUnsubscribe$ = this.actions$
+      .pipe(ofActionDispatched(Login))
+      .subscribe((action) => {
+        this.store.dispatch(new ResetError())
+      })
   }
   ngOnDestroy() {
     this.actionsUnsubscribe$.unsubscribe()
+    this.actionsLoginUnsubscribe$.unsubscribe()
   }
 }

@@ -8,9 +8,6 @@ import { ServerResponseModel } from 'src/app/models/server-response.model'
 import { HTTPError, ApiError } from '../error/error.actions'
 @State<AuthStateModel>({
   name: 'authState',
-  defaults: {
-    applicationUID: '{4aecdd14-8a3f-4aa8-8adc-7b0b06355aaa}',
-  },
 })
 @Injectable()
 export class AuthState {
@@ -33,11 +30,7 @@ export class AuthState {
   getAuthToken(stateContext: StateContext<AuthStateModel>, action: Login) {
     const state = stateContext.getState()
     return this.authService
-      .login(
-        action.payload.username,
-        action.payload.password,
-        state.applicationUID
-      )
+      .login(action.payload.username, action.payload.password)
       .pipe(
         tap((response: ServerResponseModel) => {
           if (response.success) {
@@ -62,11 +55,7 @@ export class AuthState {
   ) {
     const state = stateContext.getState()
     return this.authService
-      .resetPassword(
-        action.payload.username,
-        action.payload.password,
-        state.applicationUID
-      )
+      .resetPassword(action.payload.username, action.payload.password)
       .pipe(
         tap((token) => {
           stateContext.setState({

@@ -2,7 +2,6 @@ import { NumberFormatStyle } from '@angular/common'
 
 export interface User {
   id?: number
-  applicationUID: string
   status?: boolean
   createdDate?: Date
   modifiedDate?: Date
@@ -15,12 +14,12 @@ export interface User {
   accountStatus?: boolean
   email?: string
   phone?: string
+  userType: string
   company: Company
 }
 export interface AuthStateModel {
   username?: string
   password?: string
-  applicationUID: string
   token?: string
 }
 export interface Company {
@@ -29,7 +28,7 @@ export interface Company {
   contactNumber?: string
   createdDate?: Date
   description?: string
-  id: number
+  id: string
   modifiedDate?: Date
   name: string
   physicalAddress?: string

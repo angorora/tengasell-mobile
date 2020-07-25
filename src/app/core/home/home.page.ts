@@ -8,7 +8,6 @@ import {
 import { Logout, Login, LOGOUT } from 'src/app/store/auth/auth.actions'
 import { Subscription } from 'rxjs'
 import { Router } from '@angular/router'
-import { ResetError } from 'src/app/store/error/error.actions'
 
 @Component({
   selector: 'app-home',

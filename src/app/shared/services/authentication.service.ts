@@ -28,27 +28,17 @@ export class AuthenticationService {
       .pipe(tap((user) => mapUserFromServer(user)))
   }
 
-  login(
-    username: string,
-    password: string,
-    applicationUID: string
-  ): Observable<ServerResponseModel> {
+  login(username: string, password: string): Observable<ServerResponseModel> {
     return this.http.post<ServerResponseModel>(`${this.baseUrl}login`, {
       username: username,
       password: password,
-      applicationUID: applicationUID,
     })
   }
 
-  resetPassword(
-    username: string,
-    password: string,
-    applicationUID: string
-  ): any {
+  resetPassword(username: string, password: string): any {
     return this.http.post(`${this.baseUrl}users/password-reset/`, {
       username: username,
       password: password,
-      application_uid: applicationUID,
     })
   }
 }
