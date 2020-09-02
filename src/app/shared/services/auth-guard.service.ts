@@ -8,12 +8,12 @@ import { Router } from '@angular/router'
 })
 export class AuthGuardService {
   constructor(private store: Store, private router: Router) {}
-
+  /* This route guard shields routes that can only beviewed by logged in users */
   canActivate() {
     if (!!this.store.selectSnapshot(AuthState.token)) {
       return true
     } else {
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/landing')
       return false
     }
   }

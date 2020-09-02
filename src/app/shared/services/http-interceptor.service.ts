@@ -34,7 +34,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     } else {
       req = this.addBasicAuthHeaders(req)
     }
-
+    req = this.addCompanyIdHeader(req)
     return next.handle(req).pipe(
       tap((response: HttpEvent<any>) => {
         if (response instanceof HttpResponse && response.status === 200) {
@@ -71,6 +71,11 @@ export class HttpInterceptorService implements HttpInterceptor {
         'Authorization',
         `Basic ${btoa('pinda:Password@2019')}`
       ),
+    })
+  }
+  private addCompanyIdHeader(req: HttpRequest<any>): HttpRequest<any> {
+    return req.clone({
+      headers: req.headers.set('Company-ID', '159550767689447256'),
     })
   }
   getTokenExpirationDate(token: string): Date {
