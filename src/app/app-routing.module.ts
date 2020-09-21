@@ -38,6 +38,14 @@ const routes: Routes = [
         (m) => m.PasswordResetPageModule
       ),
   },
+  {
+    path: 'country',
+    loadChildren: () => import('./core/country/country.module').then( m => m.CountryPageModule)
+  },
+  {
+    path: 'register-security-info',
+    loadChildren: () => import('./core/register-security-info/register-security-info.module').then( m => m.RegisterSecurityInfoPageModule)
+  },
 ]
 
 @NgModule({

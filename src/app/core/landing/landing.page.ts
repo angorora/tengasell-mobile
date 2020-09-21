@@ -15,6 +15,6 @@ export class LandingPage implements OnInit {
   }
 
   register() {
-    this.router.navigateByUrl('/registration-one')
+    this.router.navigateByUrl('country')
   }
 }

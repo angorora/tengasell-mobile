@@ -1,11 +1,14 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-menu-button color="tertiary" auto-hide="false"></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
     <ion-title>home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button expand="full" (click)="logout()">
-    Logout
-  </ion-button>
+  <ion-button expand="full" (click)="logout()"> Logout </ion-button>
 </ion-content>
