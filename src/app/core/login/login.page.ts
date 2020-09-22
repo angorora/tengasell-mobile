@@ -48,9 +48,6 @@ export class LoginPage implements OnInit {
         })
       )
   }
-  navigateBack() {
-    this.router.navigateByUrl('/landing')
-  }
 
   ngOnInit() {
     this.actionsUnsubscribe$ = this.actions$

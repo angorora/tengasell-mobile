@@ -46,6 +46,6 @@ export class CountryPage implements OnInit {
     this.router.navigateByUrl('/registration-one')
   }
   navigateBack() {
-    this.router.navigateByUrl('/landing')
+    this.router.navigateByUrl('/login')
   }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
-import { AuthGuardService } from './shared/services/auth-guard.service'
 
 const routes: Routes = [
   {
@@ -15,14 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./core/home/home.module').then((m) => m.HomePageModule),
-  },
-  {
-    path: 'landing',
-    loadChildren: () =>
-      import('./core/landing/landing.module').then((m) => m.LandingPageModule),
   },
   {
     path: 'registration-one',
@@ -40,11 +33,15 @@ const routes: Routes = [
   },
   {
     path: 'country',
-    loadChildren: () => import('./core/country/country.module').then( m => m.CountryPageModule)
+    loadChildren: () =>
+      import('./core/country/country.module').then((m) => m.CountryPageModule),
   },
   {
     path: 'register-security-info',
-    loadChildren: () => import('./core/register-security-info/register-security-info.module').then( m => m.RegisterSecurityInfoPageModule)
+    loadChildren: () =>
+      import(
+        './core/register-security-info/register-security-info.module'
+      ).then((m) => m.RegisterSecurityInfoPageModule),
   },
 ]
 

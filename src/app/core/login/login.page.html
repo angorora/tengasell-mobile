@@ -1,4 +1,6 @@
-<app-header [title]="'Login'" (navBack)="navigateBack()">Login</app-header>
+<app-header [title]="'Login'" [showBack]="false" (navBack)="navigateBack()"
+  >Login</app-header
+>
 
 <ion-content>
   <div class="login-wrapper">
@@ -18,7 +20,7 @@
                     >Username*</ion-label
                   >
                   <ion-input
-                    style="text-transform: none;"
+                    style="text-transform: none"
                     class="input"
                     formControlName="username"
                   ></ion-input>
@@ -52,9 +54,10 @@
                 >
               </div>
               <div>
-                <a routerLink="/password-reset">
-                  Forgot Password?
-                </a>
+                <a routerLink="/password-reset"> Forgot Password? </a>
+              </div>
+              <div>
+                <a routerLink="/country"> New here? Please register</a>
               </div>
             </ion-col>
           </ion-row>
