@@ -50,12 +50,6 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.actionsUnsubscribe$ = this.actions$
-      .pipe(ofActionSuccessful(Login))
-      .subscribe((action) => {
-        console.dir(action)
-        this.router.navigateByUrl('/home')
-      })
     this.actionsLoginUnsubscribe$ = this.actions$
       .pipe(ofActionDispatched(Login))
       .subscribe((action) => {
@@ -63,7 +57,6 @@ export class LoginPage implements OnInit {
       })
   }
   ngOnDestroy() {
-    this.actionsUnsubscribe$.unsubscribe()
     this.actionsLoginUnsubscribe$.unsubscribe()
   }
 }

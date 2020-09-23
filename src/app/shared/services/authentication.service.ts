@@ -36,7 +36,7 @@ export class AuthenticationService {
   }
 
   resetPassword(username: string, password: string): any {
-    return this.http.post(`${this.baseUrl}users/password-reset/`, {
+    return this.http.post(`${this.baseUrl}users/reset-password/`, {
       username: username,
       password: password,
     })

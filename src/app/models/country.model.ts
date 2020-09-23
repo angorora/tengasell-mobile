@@ -9,31 +9,31 @@ export function getCountries(): Country[] {
     {
       name: 'Zimbabwe',
       icon: '',
-      telPrefix: '+263',
+      telPrefix: '00263',
       code: 'ZWE',
     },
     {
       name: 'South Africa',
       icon: '',
-      telPrefix: '+27',
+      telPrefix: '0027',
       code: 'ZAR',
     },
     {
       name: 'Zambia',
       icon: '',
-      telPrefix: '+260',
+      telPrefix: '00260',
       code: 'ZMB',
     },
     {
       name: 'Nigeria',
       icon: '',
-      telPrefix: '+234',
+      telPrefix: '00234',
       code: 'NGA',
     },
     {
       name: 'Botswana',
       icon: '',
-      telPrefix: '+267',
+      telPrefix: '00267',
       code: 'BWA',
     },
   ]

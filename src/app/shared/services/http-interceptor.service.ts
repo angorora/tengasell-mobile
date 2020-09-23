@@ -10,7 +10,7 @@ import {
 import { Observable, throwError } from 'rxjs'
 import { Store } from '@ngxs/store'
 import { AuthState } from 'src/app/store/auth/auth-state'
-import { jwt_decode } from 'jwt-decode'
+
 import { catchError, tap } from 'rxjs/operators'
 import { Router } from '@angular/router'
 import { HTTPError, ApiError } from 'src/app/store/error/error.actions'
@@ -77,20 +77,5 @@ export class HttpInterceptorService implements HttpInterceptor {
     return req.clone({
       headers: req.headers.set('Company-ID', '159550767689447256'),
     })
-  }
-  getTokenExpirationDate(token: string): Date {
-    const decoded = jwt_decode(token)
-    if (decoded.exp === undefined) return null
-    const date = new Date(decoded.exp)
-    return date
-  }
-
-  isTokenExpired(token?: string): boolean {
-    if (!token) token = this.store.selectSnapshot<string>(AuthState.token)
-    if (!token) return true
-
-    const date = this.getTokenExpirationDate(token)
-    if (date === undefined) return false
-    return !(date.valueOf() > new Date().valueOf())
   }
 }
