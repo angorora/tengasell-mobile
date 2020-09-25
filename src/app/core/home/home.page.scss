@@ -1,0 +1,41 @@
+.home-camera {
+  position: absolute;
+  margin-top: -18px;
+}
+.take-camera {
+  z-index: 10000000;
+  position: absolute;
+  top: 100px;
+}
+.home-tool-bar {
+  display: flex;
+  align-items: center;
+
+  .products-search {
+    ion-input {
+      --background: var(--ion-color-light);
+      --placeholder-color: var(--ion-color-medium);
+      --placeholder-opacity: 0, 4;
+      border-radius: 3px;
+    }
+
+    ion-icon.search-icon {
+      padding: 5px;
+    }
+  }
+
+  .categories {
+    margin-left: 5px;
+
+    ion-button {
+      text-transform: capitalize;
+      --box-shadow: 0 3px 1px -2px #ffc40982, 0 2px 2px 0 #ffc4098a,
+        0 1px 5px 0 #ffc4097d;
+      margin-right: 20px;
+    }
+  }
+
+  .menu {
+    margin-right: -10px;
+  }
+}

@@ -15,6 +15,7 @@ import { takeUntil } from 'rxjs/operators'
 import { RouterNavigation } from '@ngxs/router-plugin'
 import { AppState } from './store/app/app.state'
 import { NavigatedRoute } from './store/app/app.actions'
+import { Logout } from './store/auth/auth.actions'
 
 @Component({
   selector: 'app-root',
@@ -43,23 +44,14 @@ export class AppComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.actions$
-      .pipe(ofActionDispatched(RouterNavigation), takeUntil(this.destroy$))
-      .subscribe((action: RouterNavigation) => {
-        console.dir(action.routerState.root.firstChild.url[0].path)
-        if (action.routerState.root.firstChild.url[0].path !== 'login') {
-          this.store.dispatch(
-            new NavigatedRoute(action.routerState.root.url[0].path)
-          )
-        }
-      })
-  }
+  ngOnInit() {}
 
   closeMenu() {
     this.menu.close()
   }
-
+  logout() {
+    this.store.dispatch(new Logout())
+  }
   gotoHome() {
     this.router.navigateByUrl('/home')
     this.closeMenu()
