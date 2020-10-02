@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ionic build && npx cap copy &&  npx cap open android",
-    "start": "ionic capacitor run android -l --address=192.168.0.104",
+    "start": "ionic capacitor run android -l --address=192.168.0.101",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -19,7 +19,7 @@
     "@angular/platform-browser": "~9.1.6",
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
-    "@capacitor-community/camera-preview": "^1.0.4",
+    "@capacitor-community/camera-preview": "^1.0.5",
     "@capacitor/android": "^2.3.0",
     "@capacitor/core": "^2.3.0",
     "@ionic-native/camera-preview": "^5.28.0",
@@ -31,6 +31,7 @@
     "@ngxs/storage-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
     "cordova-plugin-camera-preview": "^0.12.0",
+    "ionic": "^5.4.16",
     "jwt-decode": "^2.2.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",

@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.tengasell.app",
   "appName": "tengasell-mobile",
   "bundledWebRuntime": false,
   "npmClient": "npm",
@@ -11,7 +11,7 @@
   },
   "cordova": {},
   "server": {
-    "url": "http://192.168.0.104:8100",
+    "url": "http://192.168.0.101:8100",
     "originalUrl": "http://192.168.0.104:8101"
   }
 }

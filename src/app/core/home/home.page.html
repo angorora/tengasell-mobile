@@ -36,14 +36,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="custom-ion-content">
   <div id="picPreview" [style.background-image]="imageSrcData"></div>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button type="button" (click)="startCamera()" class="home-camera">
       <ion-icon color="tertiary" name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-button (click)="takePicture()()">
+    <ion-icon color="tertiary" name="checkmark"></ion-icon>
+    <ion-label>Photo</ion-label>
+  </ion-button>
+  <ion-button (click)="takePicture()()">
+    <ion-icon color="tertiary" name="checkmark"></ion-icon>
+    <ion-label>Photo</ion-label>
+  </ion-button>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button class="close-camera" type="button">
       <ion-icon color="tertiary" name="close"></ion-icon>
     </ion-fab-button>
@@ -52,21 +60,24 @@
     <ion-fab-button class="take-camera" type="button">
       <ion-icon color="tertiary" name="checkmark"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>
-<ion-toolbar color="primary">
-  <ion-grid>
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-button fill="clear">
-          <ion-icon slot="icon-only" color="tertiary" name="heart"></ion-icon>
-        </ion-button>
-      </ion-col>
-      <ion-col class="ion-text-center">
-        <ion-button fill="clear">
-          <ion-icon slot="icon-only" color="tertiary" name="cart"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-toolbar>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" color="tertiary" name="heart"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" color="tertiary" name="cart"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

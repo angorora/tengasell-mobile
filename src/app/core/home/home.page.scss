@@ -2,11 +2,16 @@
   position: absolute;
   margin-top: -18px;
 }
+
 .take-camera {
   z-index: 10000000;
   position: absolute;
-  top: 100px;
 }
+
+.custom-ion-content {
+  --background-color: transparent;
+}
+
 .home-tool-bar {
   display: flex;
   align-items: center;

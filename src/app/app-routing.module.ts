@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./core/home/home.module').then((m) => m.HomePageModule),
   },
