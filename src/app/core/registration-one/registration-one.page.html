@@ -3,20 +3,6 @@
 >
 <ion-content>
   <form [formGroup]="regForm" (ngSubmit)="register()">
-    <section *ngIf="false" class="company-details">
-      <header class="ion-text-left section-header">Company Details</header>
-      <ion-item>
-        <ion-label position="floating">Company Name*</ion-label>
-        <ion-input name="companyName" [value]="companyName"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Description</ion-label>
-        <ion-textarea
-          name="companyDescription"
-          [value]="companyDescription"
-        ></ion-textarea>
-      </ion-item>
-    </section>
     <section class="personal-details">
       <header class="ion-text-left section-header">Personal Details</header>
       <ion-item>
@@ -84,15 +70,70 @@
       >
         Email format is not correct
       </div>
+      <div class="company-toggle">
+        <ion-item lines="none">
+          <ion-label>I have a company</ion-label>
+          <ion-toggle
+            slot="start"
+            name="blueberry"
+            (ionChange)="toggleCompany()"
+            formControlName="isCompanyToggle"
+          ></ion-toggle>
+        </ion-item>
+      </div>
+    </section>
+    <section *ngIf="isCompany" class="company-details">
+      <header class="ion-text-left section-header">Company Details</header>
+      <ion-item>
+        <ion-label position="floating">Company Name*</ion-label>
+        <ion-input
+          formControlName="companyName"
+          [value]="companyName"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address Line 1formControlName</ion-label>
+        <ion-input
+          formControlName="addressLine1"
+          [value]="companyName"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address Line 2</ion-label>
+        <ion-input
+          formControlName="addressLine2"
+          [value]="companyName"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City/Town</ion-label>
+        <ion-input formControlName="city" [value]="companyName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Province</ion-label>
+        <ion-input formControlName="province" [value]="companyName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Postal Code</ion-label>
+        <ion-input
+          maxLength="4"
+          type="phone"
+          formControlName="postCode"
+          [value]="companyName"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea
+          name="companyDescription"
+          [value]="companyDescription"
+        ></ion-textarea>
+      </ion-item>
     </section>
   </form>
 </ion-content>
 <ion-footer>
-  <ion-button
-    color="secondary"
-    (click)="goToSecurityPage()"
-    expand="full"
-    fill="outline"
-    >Register <ion-icon slot="end" name="chevron-forward-outline"></ion-icon
+  <ion-button color="secondary" (click)="goToSecurityPage()" expand="full"
+    >Next <ion-icon slot="end" name="chevron-forward-outline"></ion-icon
   ></ion-button>
 </ion-footer>

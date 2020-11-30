@@ -22,6 +22,7 @@ export class RegistrationOnePage {
   cellphone: string
   userFields: { [key: string]: FormControl }
   companyFields: {}
+  isCompany: false
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -30,6 +31,7 @@ export class RegistrationOnePage {
     this.userFields = {
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
+      isCompanyToggle: new FormControl(),
       email: new FormControl('', [
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
@@ -39,6 +41,13 @@ export class RegistrationOnePage {
         Validators.pattern(/^[0-9]*$/g),
         Validators.maxLength(10),
       ]),
+      companyName: new FormControl(),
+      addressLine1: new FormControl(),
+      addressLine2: new FormControl(),
+      city: new FormControl(),
+      province: new FormControl(),
+      postCode: new FormControl(),
+      description: new FormControl(),
     }
     this.regForm = this.formBuilder.group(this.userFields)
   }
@@ -58,7 +67,9 @@ export class RegistrationOnePage {
     }
     return
   }
-
+  toggleCompany() {
+    this.isCompany = this.regForm.controls.isCompanyToggle.value
+  }
   navigateBack() {
     this.router.navigateByUrl('/country')
   }

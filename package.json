@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ionic build && npx cap copy &&  npx cap open android",
-    "start": "ionic capacitor run android -l --address=192.168.0.101",
+    "start": "ionic capacitor run android -l --address=192.168.0.108",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

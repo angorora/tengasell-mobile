@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
 import { AuthGuardService } from './shared/services/auth-guard.service'
+import { DataResolverService } from './shared/services/data-resolver.service'
 
 const routes: Routes = [
   {
@@ -44,6 +45,14 @@ const routes: Routes = [
       import(
         './core/register-security-info/register-security-info.module'
       ).then((m) => m.RegisterSecurityInfoPageModule),
+  },
+  {
+    path: 'create-listing/:data',
+    resolve: { data: DataResolverService },
+    loadChildren: () =>
+      import('./core/listing/create-listing/create-listing.module').then(
+        (m) => m.CreateListingPageModule
+      ),
   },
 ]
 
