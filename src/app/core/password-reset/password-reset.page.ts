@@ -4,7 +4,7 @@ import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Store, Actions, ofActionSuccessful } from '@ngxs/store'
 import { ResetPassword } from 'src/app/store/auth/auth.actions'
-import { ToastService } from 'src/app/shared/services/toast.service'
+import { ToastService } from 'src/app/core/services/toast.service'
 
 @Component({
   selector: 'app-password-reset',

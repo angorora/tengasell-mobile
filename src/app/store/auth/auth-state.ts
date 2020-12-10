@@ -1,6 +1,6 @@
 import { State, Selector, Action, StateContext, Store } from '@ngxs/store'
 import { AuthStateModel } from '../../models/user.model'
-import { AuthenticationService } from '../../shared/services/authentication.service'
+import { AuthenticationService } from '../../core/services/authentication.service'
 import { AuthActions, Login, Logout, ResetPassword } from './auth.actions'
 import { tap } from 'rxjs/operators'
 import { Injectable } from '@angular/core'

@@ -8,18 +8,12 @@ import {
 } from '@capacitor/core'
 
 import { CameraPreviewOptions } from '@capacitor-community/camera-preview'
-import {
-  Store,
-  ofActionSuccessful,
-  Actions,
-  ofActionDispatched,
-} from '@ngxs/store'
-import { Logout, Login, LOGOUT } from 'src/app/store/auth/auth.actions'
+import { Store, Actions, ofActionDispatched } from '@ngxs/store'
+import { Logout } from 'src/app/store/auth/auth.actions'
 import { Subscription } from 'rxjs'
 import { Router } from '@angular/router'
 import { MenuController } from '@ionic/angular'
-import { Navigate } from '@ngxs/router-plugin'
-import { ParamsTempStoreService } from 'src/app/shared/services/params-temp-store.service'
+import { ParamsTempStoreService } from '../../core/services/params-temp-store.service'
 
 @Component({
   selector: 'app-home',

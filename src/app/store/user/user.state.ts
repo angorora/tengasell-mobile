@@ -6,7 +6,7 @@ import {
   UpdateSecurityInfo,
   SaveUser,
 } from './user.actions'
-import { AuthenticationService } from 'src/app/shared/services/authentication.service'
+import { AuthenticationService } from 'src/app/core/services/authentication.service'
 import { tap } from 'rxjs/operators'
 import { patch } from '@ngxs/store/operators'
 import { ResetError } from '../error/error.actions'

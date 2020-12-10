@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { Store, Actions, ofActionSuccessful } from '@ngxs/store'
-import { Subscription } from 'rxjs'
-import { SaveUser, UpdatePersonalInfo } from 'src/app/store/user/user.actions'
-import { ToastService } from 'src/app/shared/services/toast.service'
+import { Store } from '@ngxs/store'
+import { UpdatePersonalInfo } from 'src/app/store/user/user.actions'
 
 @Component({
   selector: 'app-registration-one',

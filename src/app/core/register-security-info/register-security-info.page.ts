@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { Actions, Store, ofActionSuccessful } from '@ngxs/store'
-import { ToastService } from 'src/app/shared/services/toast.service'
+import { ToastService } from 'src/app/core/services/toast.service'
 import { SaveUser, UpdateSecurityInfo } from 'src/app/store/user/user.actions'
 import { Subscription } from 'rxjs'
 import { Router } from '@angular/router'
