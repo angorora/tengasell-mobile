@@ -1,17 +1,3 @@
-.home-camera {
-  position: absolute;
-  margin-top: -18px;
-}
-
-.take-camera {
-  z-index: 10000000;
-  position: absolute;
-}
-
-.custom-ion-content {
-  --background-color: transparent;
-}
-
 .home-header {
   display: flex;
   align-items: center;
@@ -30,7 +16,7 @@
   }
   .logo {
     img {
-      height: 50px;
+      height: 45px;
       width: 50px;
     }
   }
@@ -58,32 +44,13 @@
   }
 }
 
-.home-footer {
-  ion-col {
-    --ion-grid-column-padding: 1px;
-  }
-  .footer-icon {
-    font-size: 42px;
-    color: var(--ion-color-medium);
-  }
-  & .enabled {
-    color: var(--ion-color-primary);
-  }
-  .footer-icon-label {
-    color: var(--ion-color-medium);
-  }
-  & .enabled {
-    color: var(--ion-color-primary);
-  }
-  .cart-badge {
-    position: absolute;
-    top: 2px;
-    right: 10px;
-    background-color: var(--ion-color-tertiary);
-    color: var(--ion-color-light);
-    width: 20px;
-    height: 20px;
-    font-size: 16px;
-    border-radius: 50%;
+.custom-ion-content {
+  .scrollable-segment {
+    .home-page-filters {
+      .filter {
+        color: var(--ion-color-primary);
+        text-transform: capitalize;
+      }
+    }
   }
 }

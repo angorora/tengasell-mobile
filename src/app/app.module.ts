@@ -18,6 +18,7 @@ import { ErrorState } from './store/error/error.state'
 import { UserState } from './store/user/user.state'
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin'
 import { AppState } from './store/app/app.state'
+import { SuperTabsModule } from '@ionic-super-tabs/angular'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,6 +27,7 @@ import { AppState } from './store/app/app.state'
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    SuperTabsModule.forRoot(),
     NgxsModule.forRoot([AuthState, ErrorState, UserState, AppState], {
       developmentMode: !environment.production,
     }),
