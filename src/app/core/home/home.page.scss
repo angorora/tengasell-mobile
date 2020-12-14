@@ -45,11 +45,17 @@
 }
 
 .custom-ion-content {
-  .scrollable-segment {
+  .scrollable-tabs {
+ 
     .home-page-filters {
+      height:40px;
+      --st-indicator-color: var(--ion-color-light);
       .filter {
+        padding-top: 10px;
         color: var(--ion-color-primary);
         text-transform: capitalize;
+        height: 40px !important;
+        border-right:var(--ion-color-primary) solid;
       }
     }
   }

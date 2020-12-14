@@ -30,7 +30,7 @@
 </ion-header>
 
 <ion-content class="custom-ion-content">
-  <super-tabs class="scrollable-segment">
+  <super-tabs class="scrollable-tabs">
     <!-- <span class="scrol"><ion-icon name="chevron-back-outline"></ion-icon></span> -->
 
     <super-tabs-toolbar
@@ -38,6 +38,7 @@
       color="tertiary"
       scrollable
       slot="top"
+      scrollable-padding="false"
     >
       <super-tab-button *ngFor="let filter of displayFilters" class="filter">
         {{filter.name}}

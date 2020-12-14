@@ -1,0 +1,14 @@
+<div class="product-list-item">
+  <div class="item-image">
+    <div class="image">
+      <img [src]="itemPicture" alt="">
+    </div>
+    <div class="footer">
+      <span><ion-button (click)="likeClicked()"></ion-button></span>
+      <span>{{itemPrice | currency}}</span>
+    </div>
+  </div>
+  <div class="item-title">
+   <h5>{{itemTitle}}</h5>
+  </div>
+</div>
