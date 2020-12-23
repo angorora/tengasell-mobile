@@ -1,18 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 
 
 @Component({
-  selector: 'app-product-list-item',
+  selector: 'product-list-item',
   templateUrl: './product-list-item.component.html',
   styleUrls: ['./product-list-item.component.scss'],
 })
 export class ProductListItemComponent implements OnInit {
   @Input()
-  itemPrice:number
-  @Input()
-  itemPicture
-  @Input()
-  itemTitle
+  item:Product;
+
   @Output()
   itemLike = new EventEmitter<string>()
   constructor() { }

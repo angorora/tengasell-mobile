@@ -26,7 +26,8 @@ import {
 })
 export class HomePage implements OnInit {
   actionsUnsubscribe$: Subscription
-  displayFilters = PRODUCT_FILTER_MOCKS
+  displayFilters = PRODUCT_FILTER_MOCKS;
+  saleItems = PRODUCTS_MOCK;
   constructor(
     private store: Store,
     private menu: MenuController,
@@ -69,9 +70,9 @@ export class HomePage implements OnInit {
     )
   }
   trackByFn(index: number, filter: ProductDisplayFilter) {
-    return filter.filterId
+    return filter.filterId;
   }
   ngOnDestroy() {
-    this.actionsUnsubscribe$.unsubscribe()
+    this.actionsUnsubscribe$.unsubscribe();
   }
 }

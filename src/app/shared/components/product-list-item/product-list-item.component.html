@@ -1,14 +1,18 @@
 <div class="product-list-item">
   <div class="item-image">
     <div class="image">
-      <img [src]="itemPicture" alt="">
+      <img [src]="item?.image_url" alt="">
     </div>
     <div class="footer">
-      <span><ion-button (click)="likeClicked()"></ion-button></span>
-      <span>{{itemPrice | currency}}</span>
+      <span>
+        <ion-button fill="clear" (click)="likeClicked()">
+          <ion-icon class="footer-icon" name="heart"></ion-icon>
+        </ion-button>
+      </span>
+      <span>{{item?.price | currency}}</span>
     </div>
   </div>
   <div class="item-title">
-   <h5>{{itemTitle}}</h5>
+    <h5>{{item?.title}}</h5>
   </div>
 </div>
