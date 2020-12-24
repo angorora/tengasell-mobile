@@ -46,20 +46,27 @@
 
 .custom-ion-content {
   .scrollable-tabs {
- 
+   box-shadow: none;
     .home-page-filters {
-      height:40px;
-      --st-indicator-color: var(--ion-color-light);
+      height:50px;
+      --st-indicator-color: var(--ion-color-tertiary);
       .filter {
-        padding-top: 10px;
+        padding-top: 15px;
         color: var(--ion-color-primary);
         text-transform: capitalize;
-        height: 40px !important;
-        border-right:var(--ion-color-primary) solid;
+        height: 50px !important;
+        font-size: 18px;
+        &.active{
+          color: var(--ion-color-tertiary);
+        }
+        //border-right:var(--ion-color-primary) solid;
       }
     }
     .filter-tab{
-      display:flex;
+    
+      .items-list{
+        display:flex;
+      }
     }
 
     

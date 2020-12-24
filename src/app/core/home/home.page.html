@@ -35,7 +35,7 @@
 
     <super-tabs-toolbar
       class="home-page-filters"
-      color="tertiary"
+      color="light"
       scrollable
       slot="top"
       scrollable-padding="false"
@@ -46,12 +46,12 @@
     </super-tabs-toolbar>
     <super-tabs-container>
       <super-tab class="filter-tab" *ngFor="let filter of displayFilters">
-        <ion-content> 
-          <ng-container *ngFor="let item of saleItems">
-            <product-list-item [item]="item" > 
+        <ion-content>                     
+          <section class="items-list" >
+            <product-list-item  *ngFor="let item of saleItems" [item]="item" > 
           
             </product-list-item>
-          </ng-container>
+          </section>
        
         </ion-content>
       </super-tab>
