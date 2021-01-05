@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">tengasell-mobile</string>
+    <string name="title_activity_main">tengasell-mobile</string>
+    <string name="package_name">com.tengasell.app</string>
+    <string name="custom_url_scheme">com.tengasell.app</string>
+</resources>

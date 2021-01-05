@@ -1,9 +1,64 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
+  <ion-toolbar class="home-header" color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="logo">
+            <img src="../../../assets/icon/icon.png" alt="" />
+          </div>
+        </ion-col>
+        <ion-col size="8">
+          <ion-input
+            type="search"
+            class="search-box"
+            clearInput
+            autofocus
+            placeholder="SEARCH ITEMS..."
+          >
+            <ion-icon slot="icon-only" name="search"></ion-icon></ion-input
+        ></ion-col>
+        <ion-col
+          ><div class="menu ion-text-end">
+            <ion-button>
+              <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="custom-ion-content">
+  <super-tabs class="scrollable-tabs">
+    <!-- <span class="scrol"><ion-icon name="chevron-back-outline"></ion-icon></span> -->
 
+    <super-tabs-toolbar
+      class="home-page-filters"
+      color="light"
+      scrollable
+      slot="top"
+      scrollable-padding="false"
+    >
+      <super-tab-button *ngFor="let filter of displayFilters" class="filter">
+        {{filter.name}}
+      </super-tab-button>
+    </super-tabs-toolbar>
+    <super-tabs-container>
+      <super-tab class="filter-tab" *ngFor="let filter of displayFilters">
+        <ion-content>                     
+          <section class="items-list" >
+            <product-list-item  *ngFor="let item of saleItems" [item]="item" > 
+          
+            </product-list-item>
+          </section>
+       
+        </ion-content>
+      </super-tab>
+    </super-tabs-container>
+  </super-tabs>
+  <!-- <div id="picPreview" [style.background-image]="imageSrcData"></div> -->
 </ion-content>
+<ion-footer>
+  <footer-bar></footer-bar>
+</ion-footer>

@@ -1,0 +1,23 @@
+.product-list-item{
+    display:flex;
+    flex-flow: column nowrap;
+    width:80px;
+    height: 90px;
+    border: 1px solid var(--ion-color-medium);
+    .item-image{
+   // @extend.product-list-item;
+    .image{
+     height:50px;
+     width:50px;
+    }
+    .footer{
+     display: flex;
+     justify-content: space-between;
+     flex-flow: row nowrap;
+    }
+    
+    }
+    .item-title{
+
+    }
+}

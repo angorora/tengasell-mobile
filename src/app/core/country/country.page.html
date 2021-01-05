@@ -1,0 +1,30 @@
+<app-header
+  [title]="'Select Country'"
+  [showBack]="true"
+  (navBack)="navigateBack()"
+></app-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-searchbar inputmode="ionic"></ion-searchbar>
+  </ion-toolbar>
+  <ion-list lines="full">
+    <ion-item-divider
+      (click)="goToRegistrattion(country)"
+      *ngFor="let country of countries"
+    >
+      <img src="{{ country.icon }}" /><ion-label color="primary"
+        >{{ country.name }}</ion-label
+      >
+    </ion-item-divider>
+    <ion-grid *ngIf="countries?.length === 0">
+      <ion-row>
+        <ion-col size-md="8" offset-md="2">
+          <p class="spinner ion-text-center">
+            <ion-spinner color="secondary" name="crescent"></ion-spinner>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

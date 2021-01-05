@@ -1,11 +1,18 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
-import { Store, Select } from '@ngxs/store'
+import {
+  Store,
+  Select,
+  ofActionSuccessful,
+  Actions,
+  ofActionDispatched,
+} from '@ngxs/store'
 import { Login } from 'src/app/store/auth/auth.actions'
 import { Router } from '@angular/router'
 import { ErrorState } from 'src/app/store/error/error.state'
 import { HttpErrorModel } from 'src/app/models/http-error.model'
-import { Observable } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
+import { ResetError } from 'src/app/store/error/error.actions'
 
 @Component({
   selector: 'app-login',
@@ -17,12 +24,14 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup
   @Select(ErrorState.errorMessage)
   serverError$: Observable<string>
-  @Select(ErrorState.apiErrorMessage)
-  apirError$: Observable<string>
+
+  actionsUnsubscribe$: Subscription
+  actionsLoginUnsubscribe$: Subscription
   constructor(
     private formBuilder: FormBuilder,
     private store: Store,
-    private router: Router
+    private router: Router,
+    private actions$: Actions
   ) {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', { validators: [Validators.required] }),
@@ -39,9 +48,15 @@ export class LoginPage implements OnInit {
         })
       )
   }
-  navigateBack() {
-    this.router.navigateByUrl('/landing')
-  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.actionsLoginUnsubscribe$ = this.actions$
+      .pipe(ofActionDispatched(Login))
+      .subscribe((action) => {
+        this.store.dispatch(new ResetError())
+      })
+  }
+  ngOnDestroy() {
+    this.actionsLoginUnsubscribe$.unsubscribe()
+  }
 }

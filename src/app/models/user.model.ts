@@ -1,26 +1,40 @@
 import { NumberFormatStyle } from '@angular/common'
+import { UpdateCountryInfo } from '../store/user/user.actions'
+import { Country } from './country.model'
 
 export interface User {
   id?: number
-  applicationUID: string
   status?: boolean
   createdDate?: Date
   modifiedDate?: Date
-  pin?: string
-  username: string
-  password?: string
-  firstname: string
-  lastname: string
+  personalInfo?: PersonalInfo
+  securityInfo?: SecurityInfo
+  countryInfo?: CountryInfo
+  deviceInfo?: DeviceInfo
   passwordStatus?: boolean
   accountStatus?: boolean
-  email?: string
-  phone?: string
   company: Company
 }
+export interface PersonalInfo {
+  firstname: string
+  lastname: string
+  email: string
+  phone: string
+  userType: string
+}
+export interface SecurityInfo {
+  username: string
+  password?: string
+  passwordStatus?: boolean
+  accountStatus?: boolean
+}
+export interface DeviceInfo {
+  imei?: string
+}
+export interface CountryInfo extends Country {}
 export interface AuthStateModel {
   username?: string
   password?: string
-  applicationUID: string
   token?: string
 }
 export interface Company {
@@ -29,7 +43,7 @@ export interface Company {
   contactNumber?: string
   createdDate?: Date
   description?: string
-  id: number
+  id: string
   modifiedDate?: Date
   name: string
   physicalAddress?: string

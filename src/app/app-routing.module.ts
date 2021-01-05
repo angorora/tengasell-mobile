@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core'
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
-import { AuthGuardService } from './shared/services/auth-guard.service'
+import { AuthGuardService } from './core/services/auth-guard.service'
+import { DataResolverService } from './core/services/data-resolver.service'
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
-
+    redirectTo: 'home',
     pathMatch: 'full',
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () =>
-      import('./folder/folder.module').then((m) => m.FolderPageModule),
   },
   {
     path: 'login',
@@ -21,13 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    // canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./core/home/home.module').then((m) => m.HomePageModule),
-  },
-  {
-    path: 'landing',
-    loadChildren: () =>
-      import('./core/landing/landing.module').then((m) => m.LandingPageModule),
   },
   {
     path: 'registration-one',
@@ -38,7 +29,30 @@ const routes: Routes = [
   },
   {
     path: 'password-reset',
-    loadChildren: () => import('./core/password-reset/password-reset.module').then( m => m.PasswordResetPageModule)
+    loadChildren: () =>
+      import('./core/password-reset/password-reset.module').then(
+        (m) => m.PasswordResetPageModule
+      ),
+  },
+  {
+    path: 'country',
+    loadChildren: () =>
+      import('./core/country/country.module').then((m) => m.CountryPageModule),
+  },
+  {
+    path: 'register-security-info',
+    loadChildren: () =>
+      import(
+        './core/register-security-info/register-security-info.module'
+      ).then((m) => m.RegisterSecurityInfoPageModule),
+  },
+  {
+    path: 'create-listing/:data',
+    resolve: { data: DataResolverService },
+    loadChildren: () =>
+      import('./core/listing/create-listing/create-listing.module').then(
+        (m) => m.CreateListingPageModule
+      ),
   },
 ]
 
