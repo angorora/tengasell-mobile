@@ -54,15 +54,29 @@ ion-card-title {
     font-family: 'Montserrat Bold';
 }
 
-body {
-    background-color: var(--ion-color-secondary);
-}
+
 
 .error {
     color: tomato;
     font-size: small;
 }
 
+section {
+    padding: 10px;
+
+    header {
+        font-weight: bold;
+        color: var(--ion-color-primary)
+    }
+}
+
 ion-item {
     color: var(--ion-color-secondary);
+}
+
+html,
+body,
+ion-app,
+ion-content {
+    --background-color: transparent;
 }

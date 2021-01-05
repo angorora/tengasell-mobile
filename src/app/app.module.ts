@@ -13,9 +13,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthState } from './store/auth/auth-state'
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin'
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin'
-import { HttpInterceptorService } from './shared/services/http-interceptor.service'
+import { HttpInterceptorService } from './core/services/http-interceptor.service'
 import { ErrorState } from './store/error/error.state'
 import { UserState } from './store/user/user.state'
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin'
+import { AppState } from './store/app/app.state'
+import { SuperTabsModule } from '@ionic-super-tabs/angular'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,12 +27,14 @@ import { UserState } from './store/user/user.state'
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    NgxsModule.forRoot([AuthState, ErrorState, UserState], {
+    SuperTabsModule.forRoot(),
+    NgxsModule.forRoot([AuthState, ErrorState, UserState, AppState], {
       developmentMode: !environment.production,
     }),
     NgxsStoragePluginModule.forRoot({
       key: 'authState.token',
     }),
+    NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [

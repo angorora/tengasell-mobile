@@ -1,22 +1,35 @@
 import { Injectable } from '@angular/core'
 import { State, Action, StateContext, Selector } from '@ngxs/store'
-import { HTTPError, ApiError } from './error.actions'
+import { HTTPError, ResetError, ApiError } from './error.actions'
 import { HttpErrorModel } from 'src/app/models/http-error.model'
 
 @State<HttpErrorModel>({
   name: 'errors',
+  defaults: {
+    message: '',
+    status: 0,
+  },
 })
 @Injectable()
 export class ErrorState {
   @Selector()
   static errorMessage(state: HttpErrorModel) {
-    switch (state.error.status) {
+    let message
+
+    switch (state.status) {
       case 401:
-        return 'Either username or password is incorrect'
+        message = 'Either username or password is incorrect'
+        break
+      case 200:
+        message = state.message
+        break
+      case 500:
+        message = 'Action failed please try again'
+        break
       default:
-        return 'An Error Occured on the server'
+        message = ''
     }
-    return state.error.name
+    return message
   }
   @Selector()
   static apiErrorMessage(state: HttpErrorModel) {
@@ -36,7 +49,17 @@ export class ErrorState {
     const state = stateContext.getState()
     stateContext.setState({
       ...state,
-      ...action,
+      message: action.error.message,
+      status: action.error.status,
+    })
+  }
+  @Action(ResetError)
+  resetError(stateContext: StateContext<HttpErrorModel>, action: ResetError) {
+    const state = stateContext.getState()
+    stateContext.setState({
+      ...state,
+      message: '',
+      status: 0,
     })
   }
 }

@@ -1,6 +1,7 @@
 export interface HttpErrorModel {
-  name?: string
-  message: string
+  status?: number
+  statusText?: string
+  message?: string
   error?: any
-  ok: false
+  ok?: false
 }

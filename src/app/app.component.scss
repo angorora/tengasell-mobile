@@ -9,10 +9,6 @@ ion-menu.md ion-content {
   --padding-bottom: 20px;
 }
 
-ion-menu.md ion-list {
-  padding: 20px 0;
-}
-
 ion-menu.md ion-note {
   margin-bottom: 30px;
 }
@@ -46,6 +42,7 @@ ion-menu.md ion-list#labels-list ion-list-header {
 ion-menu.md ion-item {
   --padding-start: 10px;
   --padding-end: 10px;
+  --border-color: var(--ion-color-primary);
   border-radius: 4px;
 }
 
@@ -116,4 +113,9 @@ ion-note {
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+
+.menu-icon {
+  font-size: xx-large;
+  margin-right: 15px;
 }
