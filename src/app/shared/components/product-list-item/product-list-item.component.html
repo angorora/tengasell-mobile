@@ -1,8 +1,11 @@
 <div class="product-list-item">
-  <div class="item-image">
+
     <div class="image">
       <img [src]="item?.image_url" alt="">
     </div>
+
+  <div class="detail">
+    <h5>{{item?.title}}</h5>
     <div class="footer">
       <span>
         <ion-button fill="clear" (click)="likeClicked()">
@@ -12,7 +15,5 @@
       <span>{{item?.price | currency}}</span>
     </div>
   </div>
-  <div class="item-title">
-    <h5>{{item?.title}}</h5>
-  </div>
+
 </div>

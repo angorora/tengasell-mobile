@@ -26,88 +26,88 @@ export interface ProductDisplayFilter {
 }
 export const PRODUCTS_MOCK: Product[] = [
   {
-    title: 'Test Product 1',
+    title: 'SAMSUNG GT WATCH 2020',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/ickPGVMMr98',
+    image_url: 'assets/images/unnamed.jpg',
   },
   {
     title: 'Test Product 2',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/UTSn5O8hJOk',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 3',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/HJkSEXngH84',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 4',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/w0erZAfnkjg',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 5',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/SFNxjYJFF9A',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 6',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/H6QQwnpf5hE',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 7',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/ickPGVMMr98',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 8',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/ickPGVMMr98',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 9',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/ickPGVMMr98',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 10',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/ickPGVMMr98',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 11',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/ickPGVMMr98',
+    image_url: 'assets/images/iphone.png',
   },
   {
     title: 'Test Product 12',
     description:
       'At some point during development of a project, you will have to mock some data and this one is no exception.',
     price: 100,
-    image_url: 'https://unsplash.com/photos/ickPGVMMr98',
+    image_url: 'assets/images/iphone.png',
   },
 ]
 export const PRODUCT_FILTER_MOCKS: ProductDisplayFilter[] = [
